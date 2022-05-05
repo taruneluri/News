@@ -1,0 +1,45 @@
+const mongoose=require('mongoose');
+var  schema=mongoose.Schema;
+var cart=new schema({
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    mobile:{
+        type:Number,
+        required:true
+    },
+    city:{
+        type:String,
+        required:true
+    },
+    start:{
+        type:Date
+    },
+    end:{
+        type:Date
+    },
+    noofdays:{
+        type:Number
+    },
+    total:{
+        type:Number
+    },
+    vemail:{
+        type:String
+    },
+    papername:{
+        type:String
+    },
+    paperprice:{
+        type:Number
+    },
+    image:{
+        type:String
+    }
+});
+module.exports=mongoose.model("Cart",cart);

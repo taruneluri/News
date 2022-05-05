@@ -1,0 +1,40 @@
+const mongoose =require('mongoose');
+var schema=mongoose.Schema;
+var vendor=new schema({
+    name:{
+        type:String,
+        required:true
+    },
+    email:{
+        type:String,
+        required:true
+    },
+    mobile:{
+        type:Number,
+        required:true
+    },
+    city:{
+        type:String,
+        required:true
+    },
+    papername:{
+        type:String,
+        required:true
+    },
+    paperprice:{
+        type:Number,
+        required:true
+    },
+    units:{
+        type:Number,
+        required:true
+    },
+    password:{
+        type:String,
+        required:true
+    },
+    image:{
+        type:String,
+    } 
+});
+module.exports=mongoose.model("Vendor",vendor);

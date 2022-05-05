@@ -1,0 +1,65 @@
+<div class="row">
+                    <div class="col-md-6 tn-left">
+                        
+                            <div class="col-md-12">
+                                <div class="tn-img">
+                                    <img id="image" src="" />
+                                    <div class="tn-title">
+                                        <a href=""><span id="name2"></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        
+                    </div>
+                    <div class="col-md-6 tn-right">
+                        <table class="table table-danger table-hover" id="tab">
+                            <tbody>
+                            <tr>
+                                <td>Customer Name : </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Customer Email : </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Customer Mobile : </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Customer Address : </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>News Paper Name : </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Each Paper Price : </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Start Date : </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>End Date : </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>No of Days : </td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Amount To Be Paid :</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>Delete From Cart : </td>
+                                <td><button class="btn-danger" style="color: white;"><a style="color: white;" href="/removefromcart/">Remove</a></button></td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
