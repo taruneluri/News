@@ -224,45 +224,54 @@ router.get('/removefromcart/:id',(req,res)=>{
 });
 router.post('/placeorder',(req,res)=>{
 
-                    for(var i=0;i<inside_cart.length;i++)
-                    {
-                        Order.create({
-                            name:inside_cart[i].name,
-                            email:inside_cart[i].email,
-                            mobile:inside_cart[i].mobile,
-                            city:inside_cart[i].city,
-                            start:inside_cart[i].start,
-                            end:inside_cart[i].end,
-                            noofdays:inside_cart[i].noofdays,
-                            total:inside_cart[i].total,
-                            vemail:inside_cart[i].vemail,
-                            papername:inside_cart[i].papername,
-                            paperprice:inside_cart[i].paperprice,
-                            image:inside_cart[i].image
-                        },(err)=>{
-                            if(err)
-                            {
-                                console.log(err);
-                            }
-                            else
-                            {
-                                
-                            }
-                        })
-                    }
-                    cart.deleteMany({email:user_info.email},(err)=>{
-                        if(err)
-                        {
-                            console.log(err);
-                        }
-                        else
-                        {
-                            
-                        }
-                    });
-                    res.send('true')
-                    
-                    
-                    
+for(var i=0;i<inside_cart.length;i++)
+{
+    Order.create({
+        name:inside_cart[i].name,
+        email:inside_cart[i].email,
+        mobile:inside_cart[i].mobile,
+        city:inside_cart[i].city,
+        start:inside_cart[i].start,
+        end:inside_cart[i].end,
+        noofdays:inside_cart[i].noofdays,
+        total:inside_cart[i].total,
+        vemail:inside_cart[i].vemail,
+        papername:inside_cart[i].papername,
+        paperprice:inside_cart[i].paperprice,
+        image:inside_cart[i].image
+    },(err)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            
+        }
+    })
+}
+cart.deleteMany({email:user_info.email},(err)=>{
+    if(err)
+    {
+        console.log(err);
+    }
+    else
+    {
+        
+    }
+});
+res.send('true')             
+});
+router.post('/order',(req,res)=>{
+    Order.find({email:user_info.email},(err,result)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            res.send(result);
+        }
+    })
 })
 module.exports=router;
