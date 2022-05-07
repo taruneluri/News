@@ -10,6 +10,7 @@ var mongoose=require('./mongodb');
 var User=require('../schema/user');
 var Vendor=require('../schema/vendor');
 var Cart=require('../schema/cart');
+var Order=require('../schema/order');
 const cart = require('../schema/cart');
 router.get('/userlogin',(req,res)=>{
     res.sendFile(path.resolve('pages/userlogin.html'));
@@ -25,6 +26,9 @@ router.get('/view',(req,res)=>{
 });
 router.get('/cart',(req,res)=>{
     res.sendFile(path.resolve('pages/usercart.html'));
+});
+router.get('/order',(req,res)=>{
+    res.sendFile(path.resolve('pages/userorders.html'))
 })
 //local variables 
 var user_info;
@@ -217,5 +221,48 @@ router.get('/removefromcart/:id',(req,res)=>{
             res.redirect('/user/cart')
         }
     })
+});
+router.post('/placeorder',(req,res)=>{
+
+                    for(var i=0;i<inside_cart.length;i++)
+                    {
+                        Order.create({
+                            name:inside_cart[i].name,
+                            email:inside_cart[i].email,
+                            mobile:inside_cart[i].mobile,
+                            city:inside_cart[i].city,
+                            start:inside_cart[i].start,
+                            end:inside_cart[i].end,
+                            noofdays:inside_cart[i].noofdays,
+                            total:inside_cart[i].total,
+                            vemail:inside_cart[i].vemail,
+                            papername:inside_cart[i].papername,
+                            paperprice:inside_cart[i].paperprice,
+                            image:inside_cart[i].image
+                        },(err)=>{
+                            if(err)
+                            {
+                                console.log(err);
+                            }
+                            else
+                            {
+                                
+                            }
+                        })
+                    }
+                    cart.deleteMany({email:user_info.email},(err)=>{
+                        if(err)
+                        {
+                            console.log(err);
+                        }
+                        else
+                        {
+                            
+                        }
+                    });
+                    res.send('true')
+                    
+                    
+                    
 })
 module.exports=router;

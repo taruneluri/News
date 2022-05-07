@@ -1,0 +1,41 @@
+const mongoose=require('mongoose');
+var  schema=mongoose.Schema;
+var order=new schema({
+    name:{
+        type:String,
+    },
+    email:{
+        type:String,
+    },
+    mobile:{
+        type:Number,
+    },
+    city:{
+        type:String,
+    },
+    start:{
+        type:Date
+    },
+    end:{
+        type:Date
+    },
+    noofdays:{
+        type:Number
+    },
+    total:{
+        type:Number
+    },
+    vemail:{
+        type:String
+    },
+    papername:{
+        type:String
+    },
+    paperprice:{
+        type:Number
+    },
+    image:{
+        type:String
+    }
+});
+module.exports=mongoose.model("Order",order);

@@ -125,7 +125,7 @@
         <div class="top-news" id="place" > 
             <div class="container">
                 <div class="col-md-4 offset-md-4">
-                    <center><h4 class="title"  style="padding-bottom: 40px;"><button class="btn-warning"><a href="/user/placeorder" style="color: white;">Place Order</a></button></h4></center>
+                    <center><h4 class="title"  style="padding-bottom: 40px;"><button class="btn-warning" type="button" onclick="place()">Place Order</button></h4></center>
                 </div>
             </div>
         </div>
@@ -332,6 +332,26 @@
             }
         }
         xhttp.send()
-        
+        function place(){
+            var xhttp=new XMLHttpRequest;
+            xhttp.open('POST','/user/placeorder',true);
+            xhttp.onreadystatechange=function(){
+                if(xhttp.readyState===4 && xhttp.status===200)
+                {
+                    var data=xhttp.responseText;
+                    if(data=="true")
+                    {
+                        alert("Order Placed Successfully");
+                        window.location.href='/user/order';
+                    }
+                    else if(data=="invalid")
+                    {
+                        alert("Order already Exists");
+                    }
+                }
+            }
+            xhttp.setRequestHeader("Content-Type","application/json");
+            xhttp.send();
+        }
     </script>
 </html>
