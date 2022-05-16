@@ -7,14 +7,22 @@ router.use(express.urlencoded({extended:false}));
 var path=require('path');
 //schema requirements
 var Vendor=require('../schema/vendor');
+var Order=require('../schema/order');
 //local variables
 var vendor_info;
+var order_result;
 router.get('/vendorlogin',(req,res)=>{
     res.sendFile(path.resolve('pages/vendorlogin.html'));
 });
 router.get('/vendorreg',(req,res)=>{
     res.sendFile(path.resolve('pages/vendorreg.html'));
 });
+router.get('/dashboard',(req,res)=>{
+    res.sendFile(path.resolve('pages/vendordashboard.html'));
+})
+router.get('/orders',(req,res)=>{
+    res.sendFile(path.resolve('pages/vendororders.html'));
+})
 // REST api
 router.post('/vendorreg',(req,res)=>{
     var a=req.body.name;
@@ -94,6 +102,22 @@ router.post('/login',(req,res)=>{
                 vendor_info=result;
                 res.send("true");
             }
+        }
+    })
+})
+router.get('/profile',(req,res)=>{
+    res.send(vendor_info.name);
+})
+router.post('/order',(req,res)=>{
+    Order.find({vemail:vendor_info.email},(err,result)=>{
+        if(err)
+        {
+            console.log(err);
+        }
+        else
+        {
+            order_result=result;
+            res.send(result);
         }
     })
 })
